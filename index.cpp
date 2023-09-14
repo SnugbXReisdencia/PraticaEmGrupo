@@ -19,6 +19,8 @@ int main() {
     //     int qtd[100];
     //     void add_procuto(nome, qtd );
     // produto1:: add_procuto(nome, qtd );
+    // Produto pro1
+    // pro1.add_procuto(produto, qtd);
     // };
 
     return 0;
