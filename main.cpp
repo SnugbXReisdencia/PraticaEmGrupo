@@ -35,13 +35,17 @@ void finalizar_venda(vector<Produto> &produtos, vector<ItemCarrinho> carrinho);
 
 void valor_total_carrinho(vector<ItemCarrinho> &carrinho);
 
-vector<ItemCarrinho> add_carrinho(vector<Produto> &produtos);
+vector<ItemCarrinho> add_carrinho(vector<Produto> &produtos, vector<ItemCarrinho> &carrinho);
+
+void limpaTela_palse();
+void palse();
+void limpaTela();
 
 int main()
 {
 
     // Verifica o sistema operacional para não dar erro
-    if (system("echo hello") != 0)
+    if (system("echo ''") != 0)
     {
         locale::global(locale(""));
         system("clear");
@@ -60,11 +64,13 @@ int main()
 
     do
     {
+        limpaTela();
         opcao = Menu();
         switch (opcao)
         {
         case 1:
             addProduto(produtos);
+            palse();
             break;
         case 2:
             if (produtos.size() == 0)
@@ -83,26 +89,30 @@ int main()
                 else
                 {
                     cout << "Produto nao encontrado !!\n";
+                    
                 }
             }
-
+            palse();
             break;
         case 3:
             listaProdutos(produtos);
+            palse();
             break;
         case 4:
             cout << "Opcao 4\n";
+            palse();
             break;
         case 5:
             if (produtos.size() > 0)
             {
                 do
                 {
+                    limpaTela();
                     opcao2 = MenuVenda();
                     switch (opcao2)
                     {
                     case 1:
-                        carrinho = add_carrinho(produtos);
+                        carrinho = add_carrinho(produtos, carrinho);
                         break;
                     case 2:
                         if(carrinho.size() > 0){
@@ -116,41 +126,60 @@ int main()
                         if(carrinho.size() > 0){
                             listaCarrinho(carrinho);
                         }else{
-                            cout << "A lista do carrinho está vazia !!\n";
+                            cout << "A lista do carrinho esta vazia !!\n";
                         }
                         break;
                     case 4:
                         if(carrinho.size() > 0){
                             valor_total_carrinho(carrinho);
                         }else{
-                            cout << "A lista do carrinho está vazia !!\n";
+                            cout << "A lista do carrinho esta vazia !!\n";
                         }
                         break;
                     case 0:
                         break;
                     default:
                         cout << "Opcao invalida !!\n";
-                        cout << "Por favor, escolha uma opção valida\n";
+                        cout << "Por favor, escolha uma opcao valida\n";
                         break;
                     }
-
+                    palse();                    
                 } while (opcao2 != 0);
             }else{
-                cout << "A lista de Produtos está vazia !!\n";
+                cout << "A lista de Produtos esta vazia !!\n";
                 cout << "Por favor, adicione produtos antes de Registrar uma venda!! \n";
+                palse();
             }
             break;
         case 0:
             cout << "Programa Finalizado\n";
+            palse();
             break;
         default:
             cout << "Opcao invalida !!\n";
-            cout << "Por favor, escolha uma opção valida\n";
+            cout << "Por favor, escolha uma opcao valida\n";
+            palse();
             break;
         }
     } while (opcao != 0);
 
     return 0;
+}
+
+void palse(){
+    cout << "\nPressione a tecla Enter para continuar...\n";
+    cin.sync();
+    cin.get();
+    
+}
+
+void limpaTela(){
+    system("echo ''") != 0 ? system("clear") : system("cls");
+}
+
+void limpaTela_palse(){
+    palse();
+    limpaTela();
 }
 
 void addProduto(vector<Produto> &produtos)
@@ -266,9 +295,9 @@ Produto buscar_produto(vector<Produto> &produtos)
     return produto;
 }
 
-vector<ItemCarrinho> add_carrinho(vector<Produto> &produtos)
+    
+vector<ItemCarrinho> add_carrinho(vector<Produto> &produtos, vector<ItemCarrinho> &carrinho)
 {
-    vector<ItemCarrinho> carrinho;
     ItemCarrinho aux;
     char resposta;
     do
