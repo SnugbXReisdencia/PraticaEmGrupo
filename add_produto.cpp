@@ -12,8 +12,8 @@ struct Produto{
 
 };
 
-void add_produto(){
-        vector <Produto> produtos;
+void addProduto(vector<Produto>& produtos){
+
         Produto novo_produto;
 
         char resposta;
@@ -37,14 +37,17 @@ void add_produto(){
 
         }while(resposta == 's');    
 
-        // for para teste 
-        // for (int i = 0; i < produtos.size(); i++) {
-        //         cout << "Produto           Preço        Quantidade " << endl;
-        //         cout << produtos[i].produto << "              " << produtos[i].preco << "           " << produtos[i].qtd  << endl;
-        //         cout << "====================================================================" << endl;
-        //     }
-
 };
+
+
+void listaProdutos(vector<Produto>& produtos) {
+    int tamanho = produtos.size();
+    cout  << "Produto           Preço        Quantidade "<< endl << endl;
+    for (int i = 0; i < tamanho; i++) {
+        cout << produtos[i].produto << "              " << produtos[i].preco << "           " << produtos[i].qtd << endl;
+    }
+    cout << "====================================================================" << endl;
+}
 
 
 int main() {
@@ -59,18 +62,20 @@ int main() {
         system("cls");
     }
     int opcao;
+
+    vector <Produto> produtos;
     do{
         opcao = Menu();
         switch (opcao)
         {
         case 1:
-            cout << "Opção 1\n";
+            addProduto(produtos);
             break;
         case 2:
-            add_produto();
+            cout << "Opção 2\n";
             break;
         case 3:
-            cout << "Opção 3\n";
+            listaProdutos(produtos);
             break;
         case 4:
             cout << "Opção 4\n";
