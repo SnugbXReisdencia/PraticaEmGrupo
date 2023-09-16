@@ -183,6 +183,9 @@ void addProduto(vector<Produto> &produtos)
 void listaProdutos(vector<Produto> &produtos)
 {
     int tamanho = produtos.size();
+    cout << "====================================================================" << endl;
+    cout << "========================Lista de Produtos===========================" << endl;
+    cout << "====================================================================" << endl;
     cout << "Produto           Preco        Quantidade " << endl
          << endl;
     for (int i = 0; i < tamanho; i++)
@@ -309,6 +312,9 @@ void valor_total_carrinho(vector<ItemCarrinho> &carrinho)
 
 void listaCarrinho(vector<ItemCarrinho> &carrinho){
     int tamanho = carrinho.size();
+    cout << "====================================================================" << endl;
+    cout << "===========================Lista Carrinho===========================" << endl;
+    cout << "====================================================================" << endl;
     cout << "Produto           Preco        Quantidade " << endl
          << endl;
     for (int i = 0; i < tamanho; i++)
