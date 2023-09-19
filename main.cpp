@@ -170,7 +170,6 @@ void palse(){
     cout << "\nPressione a tecla Enter para continuar...\n";
     cin.sync();
     cin.get();
-    
 }
 
 void limpaTela(){
